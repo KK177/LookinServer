@@ -105,7 +105,8 @@
         renderScale = MIN(screenScale * LookinNodeImageMaxLengthInPx / maxLength, 1);
     }
     
-    UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, renderScale);
+    CGSize size = (self.frame.size.width == 0 || self.frame.size.height == 0) ? CGSizeMake(1, 1) : self.frame.size;
+    UIGraphicsBeginImageContextWithOptions(size, NO, renderScale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     if (self.lks_hostView && !self.lks_hostView.lks_isChildrenViewOfTabBar) {
         [self.lks_hostView drawViewHierarchyInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) afterScreenUpdates:YES];
@@ -147,7 +148,8 @@
             }
         }];
         
-        UIGraphicsBeginImageContextWithOptions(self.frame.size, NO, renderScale);
+        CGSize size = (self.frame.size.width == 0 || self.frame.size.height == 0) ? CGSizeMake(1, 1) : self.frame.size;
+        UIGraphicsBeginImageContextWithOptions(size, NO, renderScale);
         CGContextRef context = UIGraphicsGetCurrentContext();
         if (self.lks_hostView && !self.lks_hostView.lks_isChildrenViewOfTabBar) {
             [self.lks_hostView drawViewHierarchyInRect:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) afterScreenUpdates:YES];
